@@ -6,6 +6,7 @@ import HomePage from './pages/homePage/page';
 import SearchPage from './pages/myAssets/page';
 import ProfilePage from './pages/profilePage/page';
 import BottomNav from './components/bottomNav/page';
+import CreateNftspp from './CreateNFTs';
 import LoginPage from './pages/login/loginPage';
 import { AuthProvider } from './utils/AuthContext';
 import ProtectedRoute from './utils/ProtectedRoute';
@@ -32,6 +33,10 @@ function App() {
             <Route
               path="/profile"
               element={<ProtectedRoute element={<ProfilePage />} />}
+            />
+            <Route
+              path="/create-nfts"
+              element={<ProtectedRoute element={<CreateNftspp />} />}
             />
           </Routes>
           <BottomNav />
