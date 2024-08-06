@@ -20,7 +20,6 @@ const HomePage = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4">
-      <h1 className='text-4xl'>Heading for check</h1>
       <header className="text-center w-full">
         <h1 className="text-4xl font-bold mb-4 text-orange-400">3D Model Viewer</h1>
         <FileUpload onFileUpload={handleFileUpload} />
