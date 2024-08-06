@@ -1,6 +1,7 @@
 import React, { useState, startTransition, Suspense } from 'react';
 import ObjModel from '../../Logic/ObjModel';
 import FileUpload from '../../Logic/FileUpload';
+import CreateNfts from '../../CreateNFTs';
 
 const HomePage = () => {
   const [objUrl, setObjUrl] = useState(null);
@@ -20,7 +21,8 @@ const HomePage = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4">
-      <header className="text-center w-full">
+      <CreateNfts/>
+      {/* <header className="text-center w-full">
         <h1 className="text-4xl font-bold mb-4 text-orange-400">3D Model Viewer</h1>
         <FileUpload onFileUpload={handleFileUpload} />
         {error && <div className="text-red-500 mt-2">{error}</div>}
@@ -31,7 +33,7 @@ const HomePage = () => {
             </Suspense>
           )}
         </div>
-      </header>
+      </header> */}
     </div>
   );
 };
