@@ -3,7 +3,7 @@ import React from 'react';
 import "./index.css"
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/homePage/page';
-import SearchPage from './pages/searchPage/page';
+import SearchPage from './pages/myAssets/page';
 import ProfilePage from './pages/profilePage/page';
 import BottomNav from './components/bottomNav/page';
 import LoginPage from './pages/login/loginPage';
