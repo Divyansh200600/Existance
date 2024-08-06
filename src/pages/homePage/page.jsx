@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { ethers } from 'ethers';
+import { Link } from 'react-router-dom';
 import CreditCardForm from '../../components/homeCompo/CreditCardForm';
 import nftGif from '../../assets/gifs/1.gif'; // Ensure the GIF path is correct
 import nftGif2 from '../../assets/gifs/2.gif';
@@ -30,24 +32,34 @@ const tdStyle = {
   fontWeight: 'bold',
 };
 
-
 const HomePage = () => {
+  const [account, setAccount] = useState(null);
+
+  const connectMetaMask = async () => {
+    if (window.ethereum) {
+      try {
+        // Request account access if needed
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        setAccount(accounts[0]);
+      } catch (error) {
+        console.error("Error connecting to MetaMask:", error);
+      }
+    } else {
+      console.log("MetaMask is not installed");
+    }
+  };
+
   return (
     <div className="bg-gradient-to-r from-purple-800 via-blue-800 to-black min-h-screen text-white font-sans">
       {/* Navbar */}
       <nav className="w-full bg-opacity-70 bg-black p-4 flex justify-between items-center shadow-lg fixed top-0 z-10">
         <div className="text-3xl font-bold text-white">Existance</div>
         <div>
-          <button
-            className="mx-2 hover:underline text-white"
-          >
-            Home
+          <button onClick={connectMetaMask} className="mx-2 hover:underline">
+            {account ? `Connected: ${account.slice(0, 6)}...${account.slice(-4)}` : "Connect"}
           </button>
-          <button
-            className="mx-2 hover:underline text-white"
-          >
-            Login
-          </button>
+          <Link to="/create-nfts" className="mx-2 hover:underline">Upload</Link>
+          <Link to="/myAssets" className="mx-2 hover:underline">My Assets</Link>
         </div>
       </nav>
 
@@ -55,7 +67,7 @@ const HomePage = () => {
       <div className="pt-24">
         {/* Hero Section */}
         <div className="flex flex-col items-center justify-center py-12">
-          <h1 className="text-6xl font-bold mb-4 text-white">Welcome to NFT Marketplace</h1>
+          <h1 className="text-6xl font-bold mb-4 text-white">Welcome to NFT Collectibles</h1>
           <p className="text-xl mb-8 text-gray-300">Discover, collect, and sell extraordinary NFTs</p>
           <button
             className="bg-gradient-to-r from-green-400 to-blue-500 px-6 py-3 rounded-lg text-lg font-semibold hover:from-green-500 hover:to-blue-600 transition mb-12"
@@ -91,7 +103,6 @@ const HomePage = () => {
               </tbody>
             </table>
           </div>
-
         </div>
 
         {/* Credit Card Form */}
@@ -99,9 +110,7 @@ const HomePage = () => {
           <CreditCardForm />
         </div>
 
-
         <div className="flex flex-col items-center justify-center py-12">
-
           <h1 className="text-6xl font-bold mb-4 text-white">SOME NFT CARDS</h1>
         </div>
 
@@ -122,9 +131,6 @@ const HomePage = () => {
             <h3 className="text-xl font-bold mb-2">NFT Title 3</h3>
             <p className="text-gray-300">Description of NFT 3</p>
           </div>
-
-
-
         </div>
       </div>
     </div>

@@ -8,6 +8,7 @@ const Navbar = () => {
       <div>
         <Link to="/" className="mx-2 hover:underline">Home</Link>
         <Link to="/login" className="mx-2 hover:underline">Login</Link>
+        <Link to="/create-nfts" className="mx-2 hover:underline">Upload</Link>
       </div>
     </nav>
   );
