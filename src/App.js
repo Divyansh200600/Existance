@@ -25,7 +25,7 @@ function App() {
               element={<ProtectedRoute element={<HomePage />} />}
             />
             <Route
-              path="/search"
+              path="/my"
               element={<ProtectedRoute element={<SearchPage />} />}
             />
             <Route

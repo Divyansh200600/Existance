@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faBriefcase, faUser } from '@fortawesome/free-solid-svg-icons';
 
 const BottomNavWrapper = styled.nav`
   position: fixed;
@@ -50,8 +50,8 @@ const BottomNav = () => {
       <NavItem exact to="/" activeClassName="active">
         <Icon icon={faHome} />
       </NavItem>
-      <NavItem to="/search" activeClassName="active">
-        <Icon icon={faSearch} />
+      <NavItem to="/myAssets" activeClassName="active">
+        <Icon icon={faBriefcase} />
       </NavItem>
       <NavItem to="/profile" activeClassName="active">
         <Icon icon={faUser} />
