@@ -24,14 +24,14 @@ const Content = styled.div`
   }
 `;
 
-const Transaction = () => {
+const ManageAssets = () => {
   return (
     <Container>
       <Content>
-        Transaction Page
+      Manage Assets Page
       </Content>
     </Container>
   );
 };
 
-export default Transaction;
+export default ManageAssets;

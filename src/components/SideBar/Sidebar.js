@@ -101,6 +101,12 @@ const Sidebar = ({ onPageChange, activePage }) => {
             Upload
           </NavLink>
           <NavLink 
+            onClick={() => { onPageChange('manage-assets'); toggleSidebar(); }} 
+            isActive={activePage === 'manage-assets'}
+          >
+            Manage Assets
+          </NavLink>
+          <NavLink 
             onClick={() => { onPageChange('transaction'); toggleSidebar(); }} 
             isActive={activePage === 'transaction'}
           >

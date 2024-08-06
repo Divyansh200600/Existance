@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import Sidebar from '../../components/SideBar/Sidebar'; // Adjust import path
 import Upload from '../../components/myAssetsComponents/upload/upload'; // Adjust import path
 import Transaction from '../../components/myAssetsComponents/transaction/transaction'; // Adjust import path
+import ManageAssets from '../../components/myAssetsComponents/manageAssets/manageAssets';
 
 const MyAssets = () => {
-  const [activePage, setActivePage] = useState('');
+  const [activePage, setActivePage] = useState('ManageAssets');
 
   const renderContent = () => {
     switch (activePage) {
@@ -12,8 +13,10 @@ const MyAssets = () => {
         return <Upload />;
       case 'transaction':
         return <Transaction />;
+        case 'manage-assets':
+        return <ManageAssets />;
       default:
-        return <h1>Main Content Area</h1>;
+        return ;
     }
   };
 
