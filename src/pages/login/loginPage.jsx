@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { auth, db } from '../../utils/firebaseConfig'; // Import auth and db directly
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
-import { doc, setDoc } from 'firebase/firestore';
+import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { toast, ToastContainer } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css'; // Import Toastify CSS
@@ -171,25 +171,27 @@ const LoginPage = () => {
       if (isLogin) {
         await signInWithEmailAndPassword(auth, email, password);
         toast.success('Login successful!');
-        navigate('/home');
+        navigate('/home'); // Redirect to home after successful login
       } else {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
 
-        // Save user details to Firestore
+        // Save user details to Firestore with timestamp
         await setDoc(doc(db, 'users', user.uid), {
           name,
           email,
-          // Add more user details if needed
+          createdAt: serverTimestamp(), // Add timestamp
         });
 
-        toast.success('Sign-up successful! You can now log in.');
+        toast.success('Sign-up successful! Redirecting to login...');
         // Switch to login form after successful signup
         setIsLogin(true);
         // Reset form fields
         setEmail('');
         setPassword('');
         setName('');
+        // Navigate to login page
+        navigate('/login');
       }
     } catch (error) {
       toast.error(`Error: ${error.message}`);
