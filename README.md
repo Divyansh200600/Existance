@@ -1,4 +1,4 @@
-# Team Existence 
+# HackIndia-Team Existence 
 
 ## About the App
 
